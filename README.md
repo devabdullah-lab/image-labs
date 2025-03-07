@@ -9,6 +9,12 @@ To ensure fast delivery of images, the **Gumlet CDN** is used. Gumlet optimizes 
 
 ---
 
+## Quick Deployments 🚀
+
+### Railway (One-click deployment)
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/8d2Rdz?referralCode=PvG1Hl)
+
 ## **Key Features**
 
 - **Image Upload**: Accepts image file uploads (JPEG, PNG, WebP).
