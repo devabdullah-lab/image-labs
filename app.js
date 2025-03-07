@@ -6,13 +6,11 @@ import path from 'path';
 import cors from 'cors';
 import { v4 as uuidv4 } from 'uuid';
 import { API_KEY, CDN_LINK, RAILWAY_VOLUME_MOUNT_PATH, PORT } from './config/env.js';
-import arcjetMiddleware from './middleware/arcjet.middleware.js';
 
 const app = express();
 
 const apiKey = API_KEY;
 app.use(express.json());
-app.use(arcjetMiddleware);
 app.use(cors({
     origin: '*', 
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
@@ -40,7 +38,6 @@ const upload = multer({
     limits: { fileSize: 25 * 1024 * 1024 }, // 10MB كحد أقصى
 });
 
-// التحقق من الـ API Key في رأس الطلب
 function verifyApiKey(req, res, next) {
     const requestApiKey = req.headers['x-api-key'];
     if (!requestApiKey || requestApiKey !== apiKey) {
@@ -71,7 +68,7 @@ app.post('/upload', verifyApiKey, upload.single('image'), async (req, res) => {
             .toFile(filePath);
         
         res.status(200).json({
-            filePath: `${CDN_LINK}/files/${randomLetters}.webp`,
+            filePath: `${CDN_LINK}/files/images/${randomLetters}.webp`,
             message: 'Image uploaded and processed successfully.',
         });
     } catch (error) {
