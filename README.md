@@ -1,11 +1,6 @@
 ## **Overview**
 
-The **Image Upload API** enables developers to easily upload images, which are then automatically processed and converted to WebP format. The API guarantees security by utilizing **API key authentication**, ensuring that only authorized users can upload files. For maximum performance and security, the API integrates with **ARCJET** (free API protection) and **Gumlet** for optimal image delivery speed.
-
-### **ARCJET API Integration**
-For additional protection and to prevent malicious activity, the **ARCJET API** is required to secure all upload requests. ARCJET provides a free API to ensure high-level protection against potential threats. You can set up ARCJET easily to enhance security.
-
-- [How to Add ARCJET API](https://arcjet.com/docs/add-arcjet)
+The **Image Upload API** enables developers to easily upload images, which are then automatically processed and converted to WebP format. The API guarantees security by utilizing **API key authentication**, ensuring that only authorized users can upload files. For maximum performance and security, the API integrates with  **Gumlet** for optimal image delivery speed.
   
 ### **Gumlet Integration for Speed**
 To ensure fast delivery of images, the **Gumlet CDN** is used. Gumlet optimizes image sizes and ensures that they load quickly on your site or app. By integrating Gumlet with the upload system, you can maximize performance without compromising image quality.
@@ -22,7 +17,6 @@ To ensure fast delivery of images, the **Gumlet CDN** is used. Gumlet optimizes 
 - **File Storage**: Stores files on the server and provides URLs for accessing them.
 - **CORS Support**: The API can be accessed from allowed domains only.
 - **File Size Limits**: Defines a maximum file size for uploads (e.g., 25MB per file).
-- **ARCJET Integration**: Use ARCJET for API security and protection.
 - **Gumlet Integration**: Leverage Gumlet for faster image delivery.
 
 ---
@@ -89,8 +83,6 @@ The API provides clear error messages in case something goes wrong. Here are the
 
 The API uses API keys to authenticate requests, ensuring that only authorized users can upload files. The server checks the key provided in the `x-api-key` header of the request against a predefined value stored in the server's environment variables. If the key is invalid or missing, the request will be denied.
 
-To further protect your API, ARCJET is required. ARCJET will help safeguard against common API attacks and ensure only legitimate traffic is processed.
-
 ---
 
 ## **File Storage**
@@ -152,10 +144,9 @@ Here are example responses for various outcomes:
 
 ## **Conclusion**
 
-This API is designed to make image uploading and processing simple for developers. With the ability to handle various image formats, secure file uploads with API key authentication, and store images on the server with easy-to-access URLs, it provides a robust solution for any application that needs image handling capabilities. Additionally, by integrating **ARCJET** for security and **Gumlet** for optimized delivery, this API offers a complete solution.
+This API is designed to make image uploading and processing simple for developers. With the ability to handle various image formats, secure file uploads with API key authentication, and store images on the server with easy-to-access URLs, it provides a robust solution for any application that needs image handling capabilities. Additionally, by integrating **Gumlet** for optimized delivery, this API offers a complete solution.
 
 For detailed guides, check the following links:
-- [Add ARCJET API for Security](https://arcjet.com/docs/add-arcjet)
 - [Integrate Gumlet for Speed](https://www.gumlet.com/docs/integration)
 
 If you have any questions or issues, please contact the server administrator or refer to the project's repository for more information.
