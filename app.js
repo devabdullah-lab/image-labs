@@ -5,11 +5,10 @@ import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
 import { v4 as uuidv4 } from 'uuid';
-import { API_KEY, CDN_LINK, RAILWAY_VOLUME_MOUNT_PATH, PORT } from './config/env.js';
 
 const app = express();
 
-const apiKey = API_KEY;
+const apiKey = process.env.API_KEY;
 app.use(express.json());
 app.use(cors({
     origin: '*', 
@@ -19,7 +18,7 @@ app.use(cors({
 }));
 
 // استخدام متغير RAILWAY_VOLUME_MOUNT_PATH للوصول إلى مجلد الـ volume
-const uploadPath = RAILWAY_VOLUME_MOUNT_PATH || '/app/files';
+const uploadPath = process.env.RAILWAY_VOLUME_MOUNT_PATH || '/app/files';
 
 if (!fs.existsSync(uploadPath)) {
     fs.mkdirSync(uploadPath, { recursive: true });
@@ -68,7 +67,7 @@ app.post('/upload', verifyApiKey, upload.single('image'), async (req, res) => {
             .toFile(filePath);
         
         res.status(200).json({
-            filePath: `${CDN_LINK}/files/images/${randomLetters}.webp`,
+            filePath: `${process.env.CDN_LINK}/files/images/${randomLetters}.webp`,
             message: 'Image uploaded and processed successfully.',
         });
     } catch (error) {
@@ -79,4 +78,4 @@ app.post('/upload', verifyApiKey, upload.single('image'), async (req, res) => {
 
 app.use('/files', express.static(uploadPath));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
