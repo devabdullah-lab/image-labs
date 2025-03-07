@@ -59,7 +59,7 @@ app.post('/upload', verifyApiKey, upload.single('image'), async (req, res) => {
         }
 
         const randomLetters = generateRandomString();
-        const filePath = path.join(uploadPath, `images/${randomLetters}.webp`);
+        const filePath = path.join(uploadPath, `${randomLetters}.webp`);
 
         await sharp(req.file.buffer)
             .resize(1024, 1024, { fit: 'inside' })
@@ -67,7 +67,7 @@ app.post('/upload', verifyApiKey, upload.single('image'), async (req, res) => {
             .toFile(filePath);
         
         res.status(200).json({
-            filePath: `${process.env.CDN_LINK}/files/images/${randomLetters}.webp`,
+            filePath: `${process.env.CDN_LINK}/files/${randomLetters}.webp`,
             message: 'Image uploaded and processed successfully.',
         });
     } catch (error) {
